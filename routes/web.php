@@ -15,3 +15,4 @@ Route::get('/', function () {
     return view('consola');
 });
 Route::resource('/usersadd','UsuariosController');
+Route::get('consulta/{id}', 'consultauser@consulta');

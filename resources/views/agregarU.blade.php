@@ -8,7 +8,8 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
+        <script src="{{asset('https://code.jquery.com/jquery-3.3.1.min.js') }}" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="{{asset('js/crearqr.js') }}"></script>
         <!-- Styles -->
         <style>
             html, body {
@@ -66,35 +67,72 @@
     <body>
     <div class="col-md-4 offset-md-2">
   <div class="card-body">
-    <form>
-      <div class="form-group">
-        <input type="url" name="foto" placeholder="http://server.com/tu-imagen.jpg" class="form-control">
+    <form action='{{url('/usersadd')}}' method='POST' enctype="multipart/form-data">
+      {{csrf_field()}}
+      <div>
+        <label>Foto</label><br>
+        <input type="file" name="foto" id="foto">
+        @if ($errors->has('foto'))
+          <small class="form-text text-danger">{{ $errors->first('foto') }}</small>
+        @endif
       </div>
-      <div class="form-group">
-        <input type="text" name="nombre"  placeholder="Jhon Doe" class="form-control" autofocus>
+      {{-- <div class="form-group">
+        <input type="text" name="nombre"  placeholder="Ingrese el nombre" class="form-control" autofocus>
+      </div> --}}
+      <div class="input-field col s12">
+        <input type="text" class="validate" value="{{old('nombre')}}" name="nombre" id="nombre" onchange="agregar()" placeholder="Ingrese el nombre">
+            @if ($errors->has('nombre'))
+                <small class="form-text text-danger">{{ $errors->first('nombre') }}</small>
+            @endif
+        <label for="producto">Nombre</label>
       </div>
-      <div class="form-group">
-        <input type="text" name="sexo"  placeholder="Femenino o Masculino" class="form-control">
+      <div class="input-field col s12">
+        <input type="text" class="validate" value="{{old('sexo')}}" name="sexo" id="sexo" placeholder="Femenino o Masculino">
+            @if ($errors->has('sexo'))
+                <small class="form-text text-danger">{{ $errors->first('sexo') }}</small>
+            @endif
+        <label for="producto">Sexo</label>
       </div>
-      <div class="form-group">
-        <input type="text" name="puesto"  placeholder="Gerente Producción" class="form-control">
+      <div class="input-field col s12">
+        <input type="text" class="validate" value="{{old('edad')}}" name="edad" id="edad" onchange="agregar()" placeholder="Ingrese la edad">
+            @if ($errors->has('edad'))
+                <small class="form-text text-danger">{{ $errors->first('edad') }}</small>
+            @endif
+        <label for="producto">Edad</label>
       </div>
-      <div class="form-group">
-        <input type="text" name="edad" placeholder="29" class="form-control">
+      <div class="input-field col s12">
+        <input type="text" class="validate" value="{{old('puesto')}}" name="puesto" id="puesto" placeholder="Ingrese el puesto">
+            @if ($errors->has('puesto'))
+                <small class="form-text text-danger">{{ $errors->first('puesto') }}</small>
+            @endif
+        <label for="producto">Puesto</label>
       </div>
-      <div class="form-group">
-        <input type="text" name="qr"  value="CODIGO"  class="form-control">
+      <div class="input-field col s12">
+        <input type="text" class="validate" value="{{old('pulsera')}}" name="pulsera" id="pulsera" placeholder="Color Pulsera">
+            @if ($errors->has('pulsera'))
+                <small class="form-text text-danger">{{ $errors->first('pulsera') }}</small>
+            @endif
+        <label for="producto">Pulsera</label>
       </div>
-      <div class="form-group">
+      <div class="form-group" display="none">
+        <input type="text" name="qr"  value="{{old('qr')}}" id="qr" onclick="eventoprueba();"  class="form-control">
+        @if ($errors->has('qr'))
+          <small class="form-text text-danger">{{ $errors->first('qr') }}</small>
+        @endif
+        <div id="qrimg">
+        </div>
+        <label for="qr">QR</label>
+      </div>
+      {{-- <div class="form-group">
         <input type="text" name="pulsera"  placeholder="Color"  class="form-control">
-      </div>
+      </div> --}}
       <button class="btn btn-success btn-block">
           Guardar
       </button>
     </form>
   </div>
 </div>
-<div class="col-md-5" #screen>
+{{-- <div class="col-md-5" #screen>
   <div class="card-header d-flex justify-content-between align-items-center mx-auto">
     <div class="mx-auto"><div>Azul</div>  
   </div>
@@ -119,7 +157,7 @@
   </div> 
   <img #canvas>
   <a #downloadLink></a>
-</div>
+</div> --}}
   <button class="btn btn-success btn-block">
     Descargar Credencial
 </button>
