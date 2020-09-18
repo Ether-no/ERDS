@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 Route::resource('/usersadd','UsuariosController');
 Route::get('consulta/{id}', 'consultauser@consulta');
+Route::get('crearencuesta/{id}', 'consultauser@encuesta')->name('crearencuesta');
+Route::resource('/encuestas','EncuestasController');

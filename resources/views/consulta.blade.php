@@ -67,7 +67,7 @@
     <body>
         @foreach ($detalles as $usuario)
             <div class="card-body">
-                <img class="responsive-img" src="{{ asset($usuario->foto)}}" alt="">
+                {{-- <img class="responsive-img" src="{{ asset($usuario->foto)}}" alt=""> --}}
             </div>
             <div class="card-body">
                 <h1>{{$usuario->nombre}}{{$usuario->edad}}</h1>
@@ -84,9 +84,7 @@
             <div class="card-body">
                 <h1>{{$usuario->edad}}</h1>
             </div>
-            <button class="btn btn-success btn-block">
-                INICIAR ENCUESTA
-            </button>
+            <a href="{{route('crearencuesta', $usuario->id_usuarios)}}">Encuesta
             <button class="btn btn-success btn-block">
                 CONSULTA ULTIMO REPORTE
             </button>

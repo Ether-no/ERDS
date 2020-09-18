@@ -35,7 +35,9 @@ class EncuestasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $datos = request()->all();
+        Encuesta::create($datos);
+        return redirect()->action('UsuariosController@index');
     }
 
     /**

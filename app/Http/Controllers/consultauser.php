@@ -12,5 +12,9 @@ class consultauser extends Controller
         $detalles = DB::table('usuarios')->where('id_usuarios', '=', $idusuario)->get();
         return view("consulta",compact('detalles'));
     }
-
+    public function encuesta($idusuario)
+    {
+        $detalles = DB::table('usuarios')->where('id_usuarios', '=', $idusuario)->get();;
+        return view("encuestacrear",compact('detalles'));
+    }
 }
