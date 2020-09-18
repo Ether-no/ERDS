@@ -68,27 +68,27 @@
   <div class="card-body">
     <form>
       <div class="form-group">
-        <input type="url" name="foto" [(ngModel)]="user.foto" placeholder="http://server.com/tu-imagen.jpg" class="form-control">
+        <input type="url" name="foto" placeholder="http://server.com/tu-imagen.jpg" class="form-control">
       </div>
       <div class="form-group">
-        <input type="text" name="nombre" [(ngModel)]="user.nombre" placeholder="Jhon Doe" class="form-control" autofocus>
+        <input type="text" name="nombre"  placeholder="Jhon Doe" class="form-control" autofocus>
       </div>
       <div class="form-group">
-        <input type="text" name="sexo" [(ngModel)]="user.sexo" placeholder="Femenino o Masculino" class="form-control">
+        <input type="text" name="sexo"  placeholder="Femenino o Masculino" class="form-control">
       </div>
       <div class="form-group">
-        <input type="text" name="puesto" [(ngModel)]="user.puesto" placeholder="Gerente Producción" class="form-control">
+        <input type="text" name="puesto"  placeholder="Gerente Producción" class="form-control">
       </div>
       <div class="form-group">
-        <input type="text" name="edad" [(ngModel)]="user.edad" placeholder="29" class="form-control">
+        <input type="text" name="edad" placeholder="29" class="form-control">
       </div>
       <div class="form-group">
-        <input type="text" name="qr" [(ngModel)]="user.qr" value={{user.nombre+user.edad}}  class="form-control">
+        <input type="text" name="qr"  value="CODIGO"  class="form-control">
       </div>
       <div class="form-group">
-        <input type="text" name="pulsera" [(ngModel)]="user.pulsera" placeholder="Pulsera"  class="form-control">
+        <input type="text" name="pulsera"  placeholder="Color"  class="form-control">
       </div>
-      <button class="btn btn-success btn-block" (click)='edit ? updateUser() : saveNewUser()'>
+      <button class="btn btn-success btn-block">
           Guardar
       </button>
     </form>
@@ -96,31 +96,31 @@
 </div>
 <div class="col-md-5" #screen>
   <div class="card-header d-flex justify-content-between align-items-center mx-auto">
-    <div class="mx-auto"><div [ngClass]="{'azul': user.pulsera == 'Azul','amarillo': user.pulsera == 'Amarillo','anaranjado': user.pulsera == 'Naranja','rosa': user.pulsera == 'Rosa','rojo': user.pulsera == 'Rojo'}"></div><div class="mx-auto" style="padding-bottom: 5px; padding-top: 5px;"><img src="http://erdsweb.xyz/appc19/assets/logo.png" class="mx-auto" width="250" imageObject.crossOrigin='anonymous'></div><div [ngClass]="{'azul': user.pulsera == 'Azul','amarillo': user.pulsera == 'Amarillo','anaranjado': user.pulsera == 'Naranja','rosa': user.pulsera == 'Rosa','rojo': user.pulsera == 'Rojo'}"></div>  
+    <div class="mx-auto"><div>Azul</div>  
   </div>
   </div>
   <div class="card card-body text-center" style="font-family: 'Quicksand';">
     <div class='row justify-content-center'>
       <div class="col-md-6" style="padding-top: 3%; padding-bottom: 3%;">
         <div class="img-round ">
-          <img  [src]="user.foto == '' ? 'http://erdsweb.xyz/appc19/assets/no-photo.jpg' : user.foto">
+          <img  src="http://erdsweb.xyz/appc19/assets/no-photo.jpg">
         </div>
       </div>
     </div>
 
-    <h2>{{user.nombre}}</h2>
-    <h5>Cargo: {{user.puesto}}</h5>
-    <h5>Edad: {{user.edad}} Años</h5>
+    <h2>Nombre</h2>
+    <h5>Cargo: Gaffer</h5>
+    <h5>Edad: 29 Años</h5>
     <div class='row justify-content-center'>
       <div class="col-md-6" style="padding-top: 3%; padding-bottom: 3%;">
-          <img src="https://chart.apis.google.com/chart?cht=qr&chs=200x200&chl= + http://erdsweb.xyz/appc19/%23/users/consulta/{{user.qr}}&chld=M|1" imageObject.crossOrigin='anonymous'>
+          <img src="https://chart.apis.google.com/chart?cht=qr&chs=200x200&chl= + http://erdsweb.xyz/appc19/%23/users/consulta/codigo&chld=M|1" imageObject.crossOrigin='anonymous'>
       </div>
     </div>
   </div> 
   <img #canvas>
   <a #downloadLink></a>
 </div>
-  <button class="btn btn-success btn-block" (click)="downloadImage()">
+  <button class="btn btn-success btn-block">
     Descargar Credencial
 </button>
 <div id="download">
